@@ -1,0 +1,163 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+    .search-bar input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 200px;
+    }
+
+    .search-bar button {
+        padding: 8px 12px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+    nav ul li a {
+        text-decoration: none;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.chat-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.chat-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    height:200px;
+    text-align: center;
+    position: relative;
+}
+
+    .chat-card .icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .chat-card h2 {
+        margin: 0 0 10px 0;
+    }
+
+    .chat-card p {
+        margin: 0 0 20px 0;
+        color: #666;
+    }
+
+    .chat-card button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+.atype {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    position: absolute; /* 相对于最近的定位父元素进行定位 */
+    bottom: 10px; /* 距离父级容器底部的距离 */
+    left: 0;
+    right: 0;
+    margin: auto; /* 使元素水平居中 */
+    padding: 15px 30px;
+    font-size: 18px;
+    color: #ffffff;
+    background: #007BFF;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
+    width: 150px;
+    text-align: center;
+}
+
+.atype:hover {
+    background-color: #0056b3;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+footer {
+    text-align: right;
+    margin-top: 20px;
+}
+
+    footer a {
+        text-decoration: none;
+        color: #333;
+    }
+
+.page-footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px; /* 与上方内容保持距离 */
+    color: #666;
+    font-size: 14px;
+    
+    border-top: 1px solid #eee;
+    width: 100%;
+    box-sizing: border-box;
+}
+.quick-add-tools {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+    .quick-add-tools a {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+.quick-add-nav {
+    background-color: #007bff !important; /* 蓝色背景 */
+    color: white; /* 白色文字，提高可读性 */
+    border-color: #007bff; /* 边框也设为蓝色，保持一致 */
+}
