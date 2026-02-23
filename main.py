@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 
 from api.example import router as example_router
 
-app = FastAPI(title="My Script Platform")
+app = FastAPI(title="My")
 
 # 注册API路由
 app.include_router(example_router, prefix="/api")
