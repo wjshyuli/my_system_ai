@@ -1,132 +1,165 @@
 <!DOCTYPE html>
-<!-- saved from url=(0028)http://122.224.125.44:8001/# -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chat 集合</title>
-    <link rel="stylesheet" href="./static/ai_style.css">
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>AI 智能工作台</title>
+  <link rel="stylesheet" href="./static/style.css">
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>AI Chat 集合</h1>
-            <div class="search-bar">
-                <input type="text" placeholder="搜索聊天机器人...">
-                <button>🔍</button>
-            </div>
-        </header>
-        <nav>
-            <ul>
-                <li><button type="button">全部</button></li>
-                <li><button type="button">收藏</button></li>
-                <li><button type="button">开发工具</button></li>
-                <li><button type="button">内容创作</button></li>
-                <li><button type="button">数据工具</button></li>
-                <li><button type="button">教育</button></li>
-                <li><button type="button">技术</button></li>
-            </ul>
-        </nav>
-        <main>
-            <div class="chat-cards">
-            
-                 <div class="chat-card">
-                    <div class="icon">🤖</div>
-                    <h2>泰能小析</h2>
-                    <p>中策泰国能源分析。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/8SAReWlEz2W1zjqL" target="_blank">开始对话 →</a>
-                </div>
-                <div class="chat-card">
-                    <div class="icon">🔧</div>
-                    <h2>泰品小析</h2>
-                    <p>中策泰国品质分析。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/SWcUThmsOKWrFWuH" target="_blank">开始对话 →</a>
-                </div>
 
-                <div class="chat-card">
-                    <div class="icon">&lt;&gt;</div>
-                    <h2>设备故障查询通</h2>
-                    <p>查询常见设备故障问题。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/JSHYbagy5BDcgDMn" target="_blank">开始对话 →</a>
-                </div>
-                <div class="chat-card">
-                    <div class="icon">📊</div>
-                    <h2>电脑速修通</h2>
-                    <p>帮助分析电脑故障原因和提出解决方案。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/yd0xyV4ciXqBF2dQ" target="_blank">开始对话 →</a>
-                </div>
-                <div class="chat-card">
-                    <div class="icon">💬</div>
-                    <h2>MES运维通</h2>
-                    <p>回答各类常见MES问题，提供全方位的知识支持。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/vxOpcjMmocGEWCD1" target="_blank">开始对话 →</a>
-                </div>
+<!-- 🌌 粒子背景层 -->
+<div id="particles-js"></div>
 
-                <div class="chat-card">
-                    <div class="icon">📚</div>
-                    <h2>柜寻通</h2>
-                    <p>辅助机房运维人员快速查找服务器位置</p>
-                    <a class="atype" href="http://10.3.4.2/chat/HHx90YJ1V4CcTdm4" target="_blank">开始对话 →</a>
-                </div>
-               
-               
-<div class="chat-card">
-                    <div class="icon">🔧</div>
-                    <h2>新闻爬取</h2>
-                    <p>摘取热点新闻。</p>
-                    <a class="atype" href="http://10.3.4.2/chat/wcNcloK771EloLAf" target="_blank">开始对话 →</a>
-                </div>
-                
+<div class="container">
 
+<header>
+  <h1>AI 智能工作台</h1>
 
-            </div>
-        </main>
-        <footer class="page-footer">
-            <h3>快速添加常用AI工具</h3>
-            <div class="quick-add-tools">
-            <a class="quick-add-tool quick-add-nav" href="http://10.3.10.103/" target="_blank">+ 中策泰国门户导航</a>
-                
-                <a href="https://www.doubao.com/chat/" target="_blank">+ 豆包</a>
-                <a href="https://www.kimi.com/" target="_blank">+ kimi</a>
-                <a href="https://yiyan.baidu.com/agreement" target="_blank">+ 文心一言</a>
-                <a href="https://www.tongyi.com/" target="_blank">+ 通义千问</a>
-            </div>
-            <!--<button id="addCardBtn" class="atype" style="margin: 20px auto; display: block;">+ 添加新卡片</button>-->
-            <h4>技术支持：中策泰国橡胶有限公司信息技术处</h4>
-        </footer>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="搜索 AI 助手...">
+    <button>🔍</button>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><button class="filter-btn active" data-category="all">全部</button></li>
+    <li><button class="filter-btn" data-category="dev">开发</button></li>
+    <li><button class="filter-btn" data-category="data">数据</button></li>
+    <li><button class="filter-btn" data-category="ops">运维</button></li>
+    <li><button class="filter-btn" data-category="office">办公</button></li>
+  </ul>
+</nav>
+
+<main>
+  <div class="chat-cards" id="cardContainer">
+
+    <div class="chat-card" data-category="data">
+      <span class="tag online">在线</span>
+      <div class="icon">⚡</div>
+      <h2>泰能小析</h2>
+      <p>能源数据智能分析 · 实时洞察</p>
+      <a class="atype" href="http://10.3.4.2/chat/8SAReWlEz2W1zjqL" target="_blank">进入 →</a>
     </div>
-    <!--<script src="scripts.js"></script>-->
-    <script>
-        document.getElementById('addCardBtn').addEventListener('click', function () {
-            // 弹出输入框，获取用户输入
-            let icon = prompt('请输入图标（如 📊, 🤖, 📚）:', '✨');
 
-            // 如果用户点击“取消”，prompt 返回 null
-            if (icon === null) return; // 中断执行，不添加卡片
+    <div class="chat-card" data-category="data">
+      <span class="tag hot">推荐</span>
+      <div class="icon">📊</div>
+      <h2>泰品小析</h2>
+      <p>品质趋势预测 · 异常预警</p>
+      <a class="atype" href="http://10.3.4.2/chat/SWcUThmsOKWrFWuH" target="_blank">进入 →</a>
+    </div>
 
-            let title = prompt('请输入卡片标题:', '新功能');
-            if (title === null) return;
+    <div class="chat-card" data-category="ops">
+      <span class="tag online">在线</span>
+      <div class="icon">🛠</div>
+      <h2>设备故障通</h2>
+      <p>故障知识库 · 秒速定位</p>
+      <a class="atype" href="http://10.3.4.2/chat/JSHYbagy5BDcgDMn" target="_blank">进入 →</a>
+    </div>
 
-            let desc = prompt('请输入描述:', '这是一个新功能模块。');
-            if (desc === null) return;
+    <div class="chat-card" data-category="ops">
+      <span class="tag online">在线</span>
+      <div class="icon">💻</div>
+      <h2>电脑速修通</h2>
+      <p>智能诊断 · 一键修复建议</p>
+      <a class="atype" href="http://10.3.4.2/chat/yd0xyV4ciXqBF2dQ" target="_blank">进入 →</a>
+    </div>
 
-            let link = prompt('请输入链接:', '#');
-            if (link === null) return;
+    <div class="chat-card" data-category="office">
+      <span class="tag hot">推荐</span>
+      <div class="icon">📡</div>
+      <h2>MES 运维通</h2>
+      <p>MES 全栈助手 · 7×24 支持</p>
+      <a class="atype" href="http://10.3.4.2/chat/vxOpcjMmocGEWCD1" target="_blank">进入 →</a>
+    </div>
 
-            // 创建新的 chat-card 元素
-            const newCard = document.createElement('div');
-            newCard.className = 'chat-card';
+    <div class="chat-card" data-category="ops">
+      <span class="tag beta">内测</span>
+      <div class="icon">🗄</div>
+      <h2>柜寻通</h2>
+      <p>机柜定位 · 秒级导航</p>
+      <a class="atype" href="http://10.3.4.2/chat/HHx90YJ1V4CcTdm4" target="_blank">进入 →</a>
+    </div>
 
-            // 设置卡片内容
-            newCard.innerHTML = `
-            <div class="icon">${icon}</div>
-            <h2>${title}</h2>
-            <p>${desc}</p>
-            <a class="atype" href="${link}" target="_blank">开始对话 →</a>
-        `;
+    <div class="chat-card" data-category="dev">
+      <span class="tag beta">内测</span>
+      <div class="icon">📰</div>
+      <h2>新闻爬取</h2>
+      <p>热点聚合 · 自动摘要</p>
+      <a class="atype" href="http://10.3.4.2/chat/wcNcloK771EloLAf" target="_blank">进入 →</a>
+    </div>
 
-            // 将新卡片添加到容器
-            document.querySelector('.chat-cards').appendChild(newCard);
-        });
-    </script>
+  </div>
+</main>
 
-</body></html>
+<footer class="page-footer">
+  <h4>技术支持：中策泰国橡胶有限公司 · 信息技术处</h4>
+</footer>
+
+</div>
+
+<!-- 🔧 过滤 + 动画逻辑 -->
+<script>
+function filterCards() {
+  const keyword = document.getElementById("searchInput").value.toLowerCase();
+  const activeCategory = document.querySelector(".filter-btn.active")?.dataset.category || "all";
+  const cards = document.querySelectorAll(".chat-card");
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const matchKeyword = text.includes(keyword);
+    const matchCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+
+    card.style.display = (matchKeyword && matchCategory) ? "" : "none";
+  });
+}
+
+document.getElementById("searchInput").addEventListener("input", filterCards);
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    filterCards();
+  });
+});
+
+window.addEventListener("load", () => {
+  const cards = document.querySelectorAll(".chat-card");
+  cards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
+    setTimeout(() => {
+      card.style.transition = "0.5s ease";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, index * 80);
+  });
+});
+</script>
+
+<!-- 🌌 粒子库 -->
+<script src="./static/particles.min.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 1 },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#00f5ff",
+      opacity: 0.3,
+      width: 1
+    },
+    color: { value: "#7a5cff" }
+  }
+});
+</script>
+
+</body>
+</html>
