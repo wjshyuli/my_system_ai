@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>半制品机台看板</title>
+    <link rel="stylesheet" href="/static/board.css">
+
+    <script>
+        setTimeout(() => {
+            location.reload();
+        }, 10000);
+    </script>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="top-bar">
+    <div>        </div>
+    <h2>半制品机台状态看板</h2>
+
+    <a href="/api/mes_board_building" class="nav-btn right">成型看板>></a>
+</div>
+
+
+
+
+<div class="grid">
+    {% for row in devices %}
+    <div class="row">
+        {% for d in row %}
+
+            <div class="card
+                {% if d.status == '正常运行' %}run
+                {% elif d.status == '设备待机' %}idle
+                {% elif d.status == '待料停机' %}stop alarm
+                {% else %}repair stop leave alarm
+                {% endif %}
+            ">
+                <div>{{ d.id }}</div>
+                <div>{{ d.status }}</div>
+                <div>{{ d.duration }} 分钟</div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+<!-- ✅ 先引入库 -->
+<script src="/static/js/particles.min.js"></script>
+
+<!-- ✅ 再初始化 -->
+<script>
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 60 },
+    size: { value: 3 },
+    move: { speed: 1 },
+    line_linked: {
+      enable: true,
+      distance: 150,
+      color: "#00f5ff",
+      opacity: 0.3,
+      width: 1
+    },
+    color: { value: "#7a5cff" }
+  }
+});
+</script>
+
+</body>
+</html>
