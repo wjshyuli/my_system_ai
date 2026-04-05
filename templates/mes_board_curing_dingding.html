@@ -107,7 +107,7 @@
             <div class="card" style="background-color: {{ item.color or '#ddd' }}">
                 <div class="sbname">{{ item.sbname }}</div>
                 <div class="state">{{ item.state }}</div>
-                <div class="time">{{ item.tjsj }}</div>
+                <div class="time">{{ item.tjsj or '--'}}</div>
             </div>
         {% endfor %}
     {% else %}
