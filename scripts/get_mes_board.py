@@ -1,5 +1,5 @@
 import time
-from date.last_board_data import last_board_data
+from board_date.last_board_data import last_board_data
 from logs.logger import get_logger
 logger = get_logger(__name__)
 
