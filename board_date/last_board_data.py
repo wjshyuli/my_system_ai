@@ -62,3 +62,8 @@ last_board_data = [
 last_board_data_semi=[]
 last_board_data_building=[]
 last_board_data_curing=[]
+
+
+last_board_data_semi3=[]
+last_board_data_building3=[]
+last_board_data_curing3=[]

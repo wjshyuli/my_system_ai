@@ -108,7 +108,6 @@ def get_mes_board_building_d(request: Request):
 
 @router.get("/mes_board_curing_dingding")
 def get_mes_board_curing_d(request: Request):
-
     try:
         res = requests.post(
             "http://10.3.10.61:18080/WebDDIApi/queryLh",
@@ -130,4 +129,54 @@ def get_mes_board_curing_d(request: Request):
         {
             "request": request,
             "list": data_list   # 👈 关键：传给前端
+        })
+@router.get("/mes_board_building3_dingding")
+def get_mes_board_dingding_building3(request: Request):
+    try:
+        res = requests.post(
+            "http://10.3.10.64:18080/WebDDIApi/queryCx",
+            timeout=8
+        )
+        data = res.json()
+        data_list = data.get("Object", [])
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_building3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_semi
+
+    return templates.TemplateResponse(
+        "mes_board_building3_dingding.html",
+        {
+            "request": request,
+            "list": data_list  # 👈 关键：传给前端
+        })
+
+
+@router.get("/mes_board_curing3_dingding")
+def get_mes_board_dingding_building3(request: Request):
+    try:
+        res = requests.post(
+            "http://10.3.10.64:18080/WebDDIApi/queryLh",
+            timeout=8
+        )
+        data = res.json()
+        data_list = data.get("Object", [])
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_curing3_dingding.html",
+        {
+            "request": request,
+            "list": data_list  # 👈 关键：传给前端
         })
