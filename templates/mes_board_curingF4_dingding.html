@@ -104,7 +104,7 @@
     硫化设备
 
     <div class="nav right">
-        <a href="/api/mes_board_curing4_dingding">材料设备 >></a>
+        <a href="/api/mes_board_semi4_dingding">材料设备 >></a>
     </div>
 </div>
 
@@ -121,8 +121,8 @@
                     style="background-color: {{ item.color or '#ddd' }}"   >
                 <div class="sbname">{{ item.id }}</div>
                 <div class="state">{{ item.status }}</div>
-                <div class="time">当日产量：{{ item.production  }}</div>
-                <div class="time">停机时常（分）：{{ item.stoptime}}</div>
+                <div class="time">{{ item.production  }}pcs</div>
+                <div class="time">{{ item.stoptime}}min</div>
             </div>
         {% endfor %}
     {% else %}

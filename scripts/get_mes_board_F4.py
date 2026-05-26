@@ -20,6 +20,7 @@ def board_curing_F4():
             status = B_data.get('status', 0)
             production = B_data.get("production", 0)
             stop_duration = B_data.get("stop_duration", 0)
+            stop_duration=round(stop_duration)
             color = B_data.get("color", "#FFFFFF")
 
             machine_list.append(
@@ -32,6 +33,7 @@ def board_curing_F4():
             status = C_data.get('status', 0)
             production = C_data.get("production", 0)
             stop_duration = C_data.get("stop_duration", 0)
+            stop_duration=round(stop_duration)
             color = C_data.get("color", "#FFFFFF")
 
             machine_list.append(
@@ -67,6 +69,7 @@ def board_building_F4():
             status = A_data.get('status', 0)
             production = A_data.get("production", 0)
             stop_duration = A_data.get("stop_duration", 0)
+            stop_duration=round(stop_duration)
             color = A_data.get("color", "#FFFFFF")
 
             machine_list.append(
@@ -86,6 +89,7 @@ def board_building_F4():
             status = A_data.get('status', 0)
             production = A_data.get("production", 0)
             stop_duration = A_data.get("stop_duration", 0)
+            stop_duration=round(stop_duration)
             color = A_data.get("color", "#FFFFFF")
 
             machine_list.append(
@@ -113,8 +117,9 @@ def board_semi_F4():
 
             status = A_data.get('status', 0)
             production = A_data.get("production", 0)
-            print(production)
+
             stop_duration = A_data.get("stop_duration", 0)
+            stop_duration=round(stop_duration)
             color = A_data.get("color", "#FFFFFF")
             unit = A_data.get("unit", "unit")
             if production != 0:

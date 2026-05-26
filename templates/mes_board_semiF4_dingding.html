@@ -121,8 +121,8 @@
                     style="background-color: {{ item.color or '#ddd' }}"   >
                 <div class="sbname">{{ item.id }}</div>
                 <div class="state">{{ item.status }}</div>
-                <div class="time">当日产量：{{ item.production  }}</div>
-                <div class="time">停机时常（分）：{{ item.stoptime}}</div>
+                <div class="time">{{ item.production  }}</div>
+                <div class="time">{{ item.stoptime}}min</div>
             </div>
         {% endfor %}
     {% else %}
