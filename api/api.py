@@ -7,6 +7,7 @@ from fastapi import Request
 from fastapi.templating import Jinja2Templates
 import requests
 from board_date import last_board_data
+from scripts.get_mes_board_F4 import board_semi_F4 ,board_building_F4,board_curing_F4
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -176,6 +177,68 @@ def get_mes_board_dingding_building3(request: Request):
 
     return templates.TemplateResponse(
         "mes_board_curing3_dingding.html",
+        {
+            "request": request,
+            "list": data_list  # 👈 关键：传给前端
+        })
+
+@router.get("/mes_board_semi4_dingding")
+def get_mes_board_semi4_dingding(request: Request):
+    try:
+
+        data_list = board_semi_F4()
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_semiF4_dingding.html",
+        {
+            "request": request,
+            "list": data_list  # 👈 关键：传给前端
+        })
+
+@router.get("/mes_board_building4_dingding")
+def get_mes_board_building4_dingding(request: Request):
+    try:
+
+        data_list = board_building_F4()
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_buildingF4_dingding.html",
+        {
+            "request": request,
+            "list": data_list  # 👈 关键：传给前端
+        })
+@router.get("/mes_board_curing4_dingding")
+def get_mes_board_curing4_dingding(request: Request):
+    try:
+
+        data_list = board_curing_F4()
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_curingF4_dingding.html",
         {
             "request": request,
             "list": data_list  # 👈 关键：传给前端
