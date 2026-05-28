@@ -186,7 +186,7 @@ def get_mes_board_dingding_building3(request: Request):
 def get_mes_board_semi4_dingding(request: Request):
     try:
 
-        data_list = board_semi_F4()
+        data_list,status_list = board_semi_F4()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_curing3 = data_list
@@ -200,34 +200,40 @@ def get_mes_board_semi4_dingding(request: Request):
         "mes_board_semiF4_dingding.html",
         {
             "request": request,
-            "list": data_list  # 👈 关键：传给前端
+            "list": data_list,  # 👈 关键：传给前端
+            "status_list": status_list  # 👈 关键：传给前端
         })
 
 @router.get("/mes_board_building4_dingding")
 def get_mes_board_building4_dingding(request: Request):
     try:
 
-        data_list = board_building_F4()
+        data_list,status_list = board_building_F4()
 
         if data_list:  # 👈 关键！！！
-            last_board_data.last_board_data_curing3 = data_list
-        print(data_list)
+            last_board_data.last_board_data_curing4 = data_list
+
 
     except Exception as e:
         print("接口错误:", e)
-        data_list = last_board_data.last_board_data_curing3
+        data_list = last_board_data.last_board_data_curing4
+
+
+
 
     return templates.TemplateResponse(
         "mes_board_buildingF4_dingding.html",
         {
             "request": request,
-            "list": data_list  # 👈 关键：传给前端
+            "list": data_list,  # 👈 关键：传给前端
+            "status_list": status_list ,
         })
+
 @router.get("/mes_board_curing4_dingding")
 def get_mes_board_curing4_dingding(request: Request):
     try:
 
-        data_list = board_curing_F4()
+        data_list,status_list = board_curing_F4()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_curing3 = data_list
@@ -241,5 +247,6 @@ def get_mes_board_curing4_dingding(request: Request):
         "mes_board_curingF4_dingding.html",
         {
             "request": request,
-            "list": data_list  # 👈 关键：传给前端
+            "list": data_list,  # 👈 关键：传给前端
+            "status_list": status_list,  # 👈 关键：传给前端
         })
