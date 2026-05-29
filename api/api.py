@@ -8,6 +8,8 @@ from fastapi.templating import Jinja2Templates
 import requests
 from board_date import last_board_data
 from scripts.get_mes_board_F4 import board_semi_F4 ,board_building_F4,board_curing_F4
+from scripts.get_mes_board_F1 import board_semi_F1 ,board_building_F1,board_curing_F1
+from scripts.get_mes_board_F3 import board_semi_F3 ,board_building_F3,board_curing_F3
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -59,12 +61,12 @@ def get_mes_board_semi(request: Request):
 def get_mes_board_semi_d(request: Request):
 
     try:
-        res = requests.post(
-            "http://10.3.10.61:18080/WebDDIApi/queryBzp",
-            timeout=8
-        )
-        data = res.json()
-        data_list = data.get("Object", [])
+
+        data_list,s_list=board_semi_F1()
+
+
+
+
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_semi = data_list
@@ -78,19 +80,16 @@ def get_mes_board_semi_d(request: Request):
         "mes_board_semi_dingding.html",
         {
             "request": request,
-            "list": data_list   # 👈 关键：传给前端
+            "list": data_list,   # 👈 关键：传给前端
+            "s_list": s_list   # 👈 关键：传给前端
         })
 
 @router.get("/mes_board_building_dingding")
 def get_mes_board_building_d(request: Request):
 
     try:
-        res = requests.post(
-            "http://10.3.10.61:18080/WebDDIApi/queryCx",
-            timeout=8
-        )
-        data = res.json()
-        data_list = data.get("Object", [])
+
+        data_list ,s_list = board_building_F1()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_semi = data_list
@@ -104,18 +103,15 @@ def get_mes_board_building_d(request: Request):
         "mes_board_building_dingding.html",
         {
             "request": request,
-            "list": data_list   # 👈 关键：传给前端
+            "list": data_list,   # 👈 关键：传给前端
+            "s_list": s_list
         })
 
 @router.get("/mes_board_curing_dingding")
 def get_mes_board_curing_d(request: Request):
     try:
-        res = requests.post(
-            "http://10.3.10.61:18080/WebDDIApi/queryLh",
-            timeout=8
-        )
-        data = res.json()
-        data_list = data.get("Object", [])
+
+        data_list , s_list = board_curing_F1()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_semi = data_list
@@ -129,17 +125,14 @@ def get_mes_board_curing_d(request: Request):
         "mes_board_curing_dingding.html",
         {
             "request": request,
-            "list": data_list   # 👈 关键：传给前端
+            "list": data_list ,  # 👈 关键：传给前端
+            "s_list": s_list   # 👈 关键：传给前端
         })
 @router.get("/mes_board_building3_dingding")
 def get_mes_board_dingding_building3(request: Request):
     try:
-        res = requests.post(
-            "http://10.3.10.64:18080/WebDDIApi/queryCx",
-            timeout=8
-        )
-        data = res.json()
-        data_list = data.get("Object", [])
+
+        data_list,s_list= board_building_F3()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_building3 = data_list
@@ -153,19 +146,16 @@ def get_mes_board_dingding_building3(request: Request):
         "mes_board_building3_dingding.html",
         {
             "request": request,
-            "list": data_list  # 👈 关键：传给前端
+            "list": data_list , # 👈 关键：传给前端
+            "s_list": s_list  # 👈 关键：传给前端
         })
 
 
 @router.get("/mes_board_curing3_dingding")
 def get_mes_board_dingding_building3(request: Request):
     try:
-        res = requests.post(
-            "http://10.3.10.64:18080/WebDDIApi/queryLh",
-            timeout=8
-        )
-        data = res.json()
-        data_list = data.get("Object", [])
+
+        data_list ,s_list = board_curing_F3()
 
         if data_list:  # 👈 关键！！！
             last_board_data.last_board_data_curing3 = data_list
@@ -179,7 +169,8 @@ def get_mes_board_dingding_building3(request: Request):
         "mes_board_curing3_dingding.html",
         {
             "request": request,
-            "list": data_list  # 👈 关键：传给前端
+            "list": data_list , # 👈 关键：传给前端
+            "s_list": s_list  # 👈 关键：传给前端
         })
 
 @router.get("/mes_board_semi4_dingding")

@@ -6,81 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>硫化设备</title>
 
-<style>
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-    }
-
-    .title {
-        position: relative;   /* 👈 必须在这里 */
-        text-align: center;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px;
-        background-color: #409EFF;
-        color: white;
-    }
-
-    .container {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);  /* 👈 关键 */
-        gap: 6px;
-        padding: 6px;
-    }
-
-    .card {
-        border-radius: 6px;
-        padding: 8px;
-        text-align: center;
-        font-weight: bold;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-    }
-
-    .sbname {
-        font-size: 14px;
-        margin-bottom: 2px;
-    }
-
-    .state {
-        font-size: 10px;
-        margin-bottom: 2px;
-    }
-
-    .time {
-        font-size: 12px;
-    }
-
-
-
-
-    .nav.left { left: 10px; }
-    .nav.right { right: 10px; }
-
-    /* 链接样式 */
-    .nav a {
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    .nav {
-        position: absolute;   /* 👈 改这里！！！ */
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-
-
-
-
-</style>
-
+    <link rel="stylesheet" href="/static/css/mes_board.css">
 
 
 
 </head>
+<script src="/static/js/mes_board.js"></script>
 
 <body>
 
@@ -97,7 +28,17 @@
     </div>
 </div>
 
+<div class="summary">
 
+    {% for k,v in s_list.items() %}
+        <div class="summary-item " >
+            <div class="summary-title" style="color:{{v['color']}}" >
+                {{ k }}-{{v['count']}}
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
 
 
 <div class="container">

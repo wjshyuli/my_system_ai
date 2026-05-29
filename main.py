@@ -10,7 +10,7 @@ from api.jodoo import router as jodoo_router
 from fastapi.responses import HTMLResponse
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
-from scripts.get_mes_board import fetch_mes_data
+
 
 
 app = FastAPI(title="My")
@@ -32,9 +32,3 @@ templates = Jinja2Templates(directory="templates")
 async def home(request: Request):
     return templates.TemplateResponse("ai.html", {"request": request})
 
-
-@app.on_event("startup")
-def start_fetch_mes_data():
-    # 后台线程执行，不阻塞 FastAPI
-    t = threading.Thread(target=fetch_mes_data, daemon=True)
-    t.start()
