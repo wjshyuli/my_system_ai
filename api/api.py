@@ -9,7 +9,8 @@ import requests
 from board_date import last_board_data
 from scripts.get_mes_board_F4 import board_semi_F4 ,board_building_F4,board_curing_F4
 from scripts.get_mes_board_F1 import board_semi_F1 ,board_building_F1,board_curing_F1
-from scripts.get_mes_board_F3 import board_semi_F3 ,board_building_F3,board_curing_F3
+from scripts.get_mes_board_F2 import board_semi_F2 ,board_building_F2,board_curing_F2
+from scripts.get_mes_board_F3 import board_semi_F3 ,board_building_F3,board_curing_F3,board_curing_F3_TBR
 
 router = APIRouter()
 templates = Jinja2Templates(directory="templates")
@@ -29,7 +30,7 @@ def get_mes_four_yijian():
 def say_hello():
     return {"message": "Hello FastAPI"}
 
-
+#--------F1--------PC端-------------------
 @router.get("/mes_board_semi")
 def get_mes_board_semi(request: Request):
     result = []
@@ -56,6 +57,8 @@ def get_mes_board_semi(request: Request):
         "request": request,
         "devices": data
     })
+
+#--------F1---------------------------
 
 @router.get("/mes_board_semi_dingding")
 def get_mes_board_semi_d(request: Request):
@@ -128,6 +131,32 @@ def get_mes_board_curing_d(request: Request):
             "list": data_list ,  # 👈 关键：传给前端
             "s_list": s_list   # 👈 关键：传给前端
         })
+#--------F2--------------------------
+@router.get("/mes_board_curing2_dingding")
+def get_mes_board_dingding_curing2(request: Request):
+    try:
+
+        data_list ,s_list = board_curing_F2()
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_curing2_dingding.html",
+        {
+            "request": request,
+            "list": data_list , # 👈 关键：传给前端
+            "s_list": s_list  # 👈 关键：传给前端
+        })
+
+
+#--------F3---------------------------
+
 @router.get("/mes_board_building3_dingding")
 def get_mes_board_dingding_building3(request: Request):
     try:
@@ -152,7 +181,7 @@ def get_mes_board_dingding_building3(request: Request):
 
 
 @router.get("/mes_board_curing3_dingding")
-def get_mes_board_dingding_building3(request: Request):
+def get_mes_board_dingding_curing3(request: Request):
     try:
 
         data_list ,s_list = board_curing_F3()
@@ -172,6 +201,34 @@ def get_mes_board_dingding_building3(request: Request):
             "list": data_list , # 👈 关键：传给前端
             "s_list": s_list  # 👈 关键：传给前端
         })
+
+
+@router.get("/mes_board_curing3TBR_dingding")
+def get_mes_board_dingding_curing3TBR(request: Request):
+    try:
+
+        data_list ,s_list = board_curing_F3_TBR()
+
+        if data_list:  # 👈 关键！！！
+            last_board_data.last_board_data_curing3 = data_list
+        print(data_list)
+
+    except Exception as e:
+        print("接口错误:", e)
+        data_list = last_board_data.last_board_data_curing3
+
+    return templates.TemplateResponse(
+        "mes_board_curing3TBR_dingding.html",
+        {
+            "request": request,
+            "list": data_list , # 👈 关键：传给前端
+            "s_list": s_list  # 👈 关键：传给前端
+        })
+
+
+#--------F4---------------------------
+
+
 
 @router.get("/mes_board_semi4_dingding")
 def get_mes_board_semi4_dingding(request: Request):

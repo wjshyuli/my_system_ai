@@ -1,0 +1,12 @@
+services:
+  fastapi:
+    build: .
+    container_name: my_system_ai
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./logs:/app/logs
+
+    restart: unless-stopped

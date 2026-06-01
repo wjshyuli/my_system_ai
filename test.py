@@ -8,3 +8,6 @@ data = res.json()
 data_list = data.get("Object", [])
 
 print(data_list)
+print(data_list)
+
+

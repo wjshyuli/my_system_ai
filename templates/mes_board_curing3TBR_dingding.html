@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>硫化设备</title>
+
+    <link rel="stylesheet" href="/static/css/mes_board.css">
+
+
+
+</head>
+<script src="/static/js/mes_board.js"></script>
+
+<body>
+
+
+<div class="title">
+    <div class="nav left">
+
+    </div>
+
+    全钢硫化设备
+
+    <div class="nav right">
+
+    </div>
+</div>
+
+<div class="summary">
+
+    {% for k,v in s_list.items() %}
+        <div class="summary-item " >
+            <div class="summary-title" style="color:{{v['color']}}" >
+                {{ k }}-{{v['count']}}
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+
+<div class="container">
+
+    {% if list %}
+        {% for item in list %}
+            <div class="card" style="background-color: {{ item.color or '#ddd' }}">
+                <div class="sbname">{{ item.sbname }}</div>
+                <div class="state">{{ item.state }}</div>
+                <div class="time">{{ item.tjsj or '--'}}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>接口故障，请联系IT管理员</div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

@@ -80,3 +80,4 @@ temp/
 .ipynb_checkpoints/
 #docker
 *.tar
+.DS_Store
